@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trigger-insecure
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trigger-insecure
+  template:
+    metadata:
+      labels:
+        app: trigger-insecure
+    spec:
+      hostNetwork: true
+      containers:
+        - name: app
+          image: nginx:latest
+          securityContext:
+            privileged: true
+            runAsUser: 0
+            allowPrivilegeEscalation: true
+            readOnlyRootFilesystem: false

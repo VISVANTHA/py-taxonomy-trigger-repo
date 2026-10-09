@@ -24,8 +24,11 @@ Import this folder (or push it to GitHub/Bitbucket) in Execution Assistant, conf
 | python-perf-dependency | Unused import + circular modules |
 | semgrep-perf-static | N+1 `requests.get` in loop, triple `for`, append in nested loop, `Thread.start` |
 | gitleaks, detect-secrets | Dummy AWS/GitHub-shaped strings in `secrets.py` |
+| checkov, tfsec, kics | IaC smells in `infra/` — open SSH SG, public S3, unencrypted RDS/EBS, privileged K8s |
 
 `requests==2.19.1` needs `urllib3>=1.21.1,<1.24`. Do not pin `urllib3==1.24.2` — coverage-py then fails pip install and writes `failure.json`.
+
+GitHub Actions YAML does **not** count as IaC. Testable fingerprints `.tf`, CloudFormation (`AWSTemplateFormatVersion` / `AWS::`), Kubernetes (`apiVersion` + `kind`), and `.bicep`. The eight B1 leaves (CIS / open firewall / public storage / unencrypted storage, plus IaC Security Scanning) stay N/A until at least one of those files exists.
 
 Cert fixtures (`cert-delay`, `cert-retry`) are platform-only and are not in this repo.
 
