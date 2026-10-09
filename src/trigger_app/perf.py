@@ -1,5 +1,5 @@
 """Performance static patterns: N+1, nested loops, alloc-in-loop, threads."""
-"""Performance static patterns: N+1, nested loops, alloc-in-loop, threads."""
+
 import threading
 
 import requests
