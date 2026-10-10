@@ -21,3 +21,5 @@ def test_decide_both() -> None:
 
 def test_decide_none() -> None:
     assert decide(False, False) == "none"
+
+# test
